@@ -1,0 +1,188 @@
+/**
+ * UX/UX & CRO AUDIT FIXES
+ * Addresses all 8 critical issues identified in the audit
+ */
+
+/* ============================================
+   ISSUE 1: Header & Content Width Alignment
+   ============================================ */
+.nav-container {
+    max-width: 1140px !important; /* Match container width */
+    margin: 0 auto !important;
+    padding: 0 24px !important;
+}
+
+@media (min-width: 768px) {
+    .nav-container {
+        padding: 0 32px !important;
+    }
+}
+
+@media (min-width: 1024px) {
+    .nav-container {
+        padding: 0 40px !important;
+    }
+}
+
+/* ============================================
+   ISSUE 2: Footer Label Contrast (WCAG)
+   ============================================ */
+.contact-label {
+    color: rgba(255, 255, 255, 0.85) !important; /* High contrast light color */
+    font-weight: 600 !important; /* Stronger emphasis */
+    opacity: 1 !important; /* Override any opacity */
+}
+
+/* ============================================
+   ISSUE 4: Differentiated CTA Buttons
+   ============================================ */
+
+/* Hero CTAs - Distinct Seller vs Buyer */
+.hero-ctas .btn-primary {
+    background: linear-gradient(135deg, #059669 0%, #10b981 100%) !important; /* Green for Sellers */
+    border-color: transparent !important;
+}
+
+.hero-ctas .btn-primary:hover {
+    background: linear-gradient(135deg, #047857 0%, #059669 100%) !important;
+    transform: translateY(-2px) scale(1.05) !important;
+    box-shadow: 0 10px 20px rgba(5, 150, 105, 0.3) !important;
+}
+
+.hero-ctas .btn-secondary {
+    background-color: rgba(255, 255, 255, 0.15) !important; /* Keep blue theme for Buyers */
+    border: 2px solid rgba(255, 255, 255, 0.9) !important;
+    color: white !important;
+}
+
+.hero-ctas .btn-secondary:hover {
+    background-color: white !important;
+    color: var(--color-primary-dark) !important;
+}
+
+/* Dual CTA Cards - Distinct Backgrounds */
+.cta-card-sell {
+    background: linear-gradient(135deg, #059669 0%, #10b981 100%) !important; /* Green for Selling */
+}
+
+.cta-card-sell:hover {
+    background: linear-gradient(135deg, #047857 0%, #059669 100%) !important;
+}
+
+.cta-card-buy {
+    background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%) !important; /* Blue for Buying */
+}
+
+.cta-card-buy:hover {
+    background: linear-gradient(135deg, #1D4ED8 0%, #2563EB 100%) !important;
+}
+
+/* ============================================
+   ISSUE 5: Consistent Section Spacing
+   ============================================ */
+section {
+    padding: 80px 0 !important;
+}
+
+/* Hero gets special treatment - already has height */
+.hero {
+    padding-top: 80px !important;
+    padding-bottom: 40px !important; /* Less bottom padding since it has min-height */
+}
+
+/* Featured In is a minor section */
+.featured-in {
+    padding: 40px 0 !important;
+}
+
+/* ============================================
+   ISSUE 6: Image Overflow Prevention
+   ============================================ */
+.differentiation-section {
+    overflow-x: hidden !important; /* Prevent horizontal scroll */
+}
+
+.differentiation-image {
+    transform: translateX(-10%) !important; /* Reduce from -20% for safety */
+}
+
+@media (max-width: 1400px) {
+    .differentiation-image {
+        transform: translateX(-5%) !important; /* Even less offset on smaller screens */
+    }
+}
+
+@media (max-width: 1200px) {
+    .differentiation-image {
+        transform: translateX(0) !important; /* No offset on medium screens */
+    }
+}
+
+/* ============================================
+   ISSUE 7: Featured In Logo Visibility
+   ============================================ */
+.publication-logo {
+    filter: grayscale(100%) !important;
+    opacity: 0.85 !important; /* Increased from 0.6 */
+    max-height: 80px !important; /* Increased from 60px */
+    transition: all 0.3s ease !important;
+}
+
+.publication-logo:hover {
+    filter: grayscale(0%) !important;
+    opacity: 1 !important;
+}
+
+/* Ensure logos are balanced */
+.logos-grid {
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.logo-item {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 150px !important; /* Consistent minimum width */
+}
+
+/* ============================================
+   ISSUE 8: Sticky CTA Bar Footer Overlap Fix
+   ============================================ */
+
+/* Add bottom padding when sticky bar is visible */
+body.sticky-cta-active {
+    padding-bottom: 80px !important;
+}
+
+/* Hide sticky bar when footer is in view */
+.sticky-cta.hide-for-footer {
+    transform: translateY(100%) !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+/* Smooth transitions */
+.sticky-cta {
+    transition: transform 0.3s ease, opacity 0.3s ease !important;
+}
+
+/* ============================================
+   RESPONSIVE REFINEMENTS
+   ============================================ */
+
+@media (max-width: 768px) {
+    /* Reduce section spacing on mobile */
+    section {
+        padding: 60px 0 !important;
+    }
+
+    .hero {
+        padding-top: 60px !important;
+        padding-bottom: 30px !important;
+    }
+
+    .featured-in {
+        padding: 30px 0 !important;
+    }
+}

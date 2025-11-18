@@ -421,20 +421,24 @@ if ('IntersectionObserver' in window) {
 }
 
 // ============================================
-// STICKY CTA BAR
+// STICKY CTA BAR (Enhanced with Footer Detection)
 // ============================================
 function initStickyCTA() {
     const stickyCTA = document.getElementById('sticky-cta');
     const heroSection = document.getElementById('hero');
+    const footerSection = document.querySelector('.footer');
 
     if (!stickyCTA || !heroSection) return;
 
-    const observer = new IntersectionObserver((entries) => {
+    // Observer for hero (show/hide CTA when scrolling past hero)
+    const heroObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (!entry.isIntersecting) {
                 stickyCTA.classList.add('visible');
+                document.body.classList.add('sticky-cta-active');
             } else {
                 stickyCTA.classList.remove('visible');
+                document.body.classList.remove('sticky-cta-active');
             }
         });
     }, {
@@ -442,7 +446,25 @@ function initStickyCTA() {
         rootMargin: '0px'
     });
 
-    observer.observe(heroSection);
+    heroObserver.observe(heroSection);
+
+    // Observer for footer (hide CTA when footer is in view)
+    if (footerSection) {
+        const footerObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    stickyCTA.classList.add('hide-for-footer');
+                } else {
+                    stickyCTA.classList.remove('hide-for-footer');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px'
+        });
+
+        footerObserver.observe(footerSection);
+    }
 }
 
 // Initialize sticky CTA on page load
