@@ -386,6 +386,41 @@ window.addEventListener('resize', debounce(() => {
 }, 250));
 
 // ============================================
+// 2025 SCROLL ANIMATIONS - INTERSECTION OBSERVER
+// ============================================
+function initEnhancedScrollAnimations() {
+    // Select all sections and cards for fade-in effect
+    const animatedElements = document.querySelectorAll('section, .card, .timeline-step, .cta-card, .stat');
+
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                // Add staggered delay for elements in sequence
+                setTimeout(() => {
+                    entry.target.classList.add('fade-in-visible');
+                }, index * 100); // 100ms stagger
+            }
+        });
+    }, observerOptions);
+
+    animatedElements.forEach(element => {
+        // Add initial hidden state class
+        element.classList.add('fade-in-element');
+        observer.observe(element);
+    });
+}
+
+// Initialize enhanced scroll animations
+if ('IntersectionObserver' in window) {
+    initEnhancedScrollAnimations();
+}
+
+// ============================================
 // INITIALIZATION
 // ============================================
 console.log('Accounting Broker Homepage Loaded');

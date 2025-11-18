@@ -7,15 +7,16 @@
    CSS CUSTOM PROPERTIES
    ============================================ */
 :root {
-    /* Colors - Monochromatic Blue Palette (Clinical Professional) */
-    --color-primary: #1E40AF;
+    /* Colors - Softer Monochromatic Blue Palette (2025 Professional) */
+    --color-primary: #2563EB;
     --color-primary-dark: #1E3A8A;
     --color-primary-light: #60A5FA;
     --color-primary-lighter: #DBEAFE;
 
-    /* Colors - Gradient Palette (Refined Blues Only) */
-    --gradient-primary: linear-gradient(to right, #1E40AF, #60A5FA);
-    --gradient-subtle: linear-gradient(135deg, rgba(30, 64, 175, 0.05) 0%, rgba(96, 165, 250, 0.05) 100%);
+    /* Colors - Gradient Palette (Softer Blues with 10% Opacity Overlay) */
+    --gradient-primary: linear-gradient(to right, #1E3A8A, #60A5FA);
+    --gradient-hero-overlay: linear-gradient(135deg, rgba(30, 58, 138, 0.9) 0%, rgba(96, 165, 250, 0.85) 100%);
+    --gradient-subtle: linear-gradient(135deg, rgba(30, 58, 138, 0.05) 0%, rgba(96, 165, 250, 0.05) 100%);
 
     /* Colors - Accent (Monochromatic Extension) */
     --color-accent: #374151;
@@ -35,7 +36,7 @@
     --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
-    /* Font Sizes - Clinical Hierarchy */
+    /* Font Sizes - 2025 Hierarchy (Enhanced for Scannability) */
     --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
     --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
     --text-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
@@ -44,7 +45,8 @@
     --text-2xl: clamp(1.5rem, 1.4rem + 0.5vw, 1.75rem); /* H3 - 24px */
     --text-3xl: clamp(2rem, 1.85rem + 0.75vw, 2.5rem); /* H2 - 32px */
     --text-4xl: clamp(2.5rem, 2rem + 2.5vw, 3.5rem);
-    --text-5xl: clamp(3.25rem, 2.75rem + 2.5vw, 4rem); /* H1 - 52px */
+    --text-5xl: clamp(3.25rem, 2.75rem + 2.5vw, 4rem); /* H1 Desktop - 64px */
+    --text-5xl-mobile: clamp(2.5rem, 2rem + 2vw, 3rem); /* H1 Mobile - 40px */
 
     /* Font Weights - Professional */
     --font-normal: 400;
@@ -52,10 +54,11 @@
     --font-semibold: 600;
     --font-bold: 700;
 
-    /* Line Heights - Improved Readability */
+    /* Line Heights - 2025 Readability Standards */
     --line-height-tight: 1.2;
     --line-height-normal: 1.5;
     --line-height-relaxed: 1.6;
+    --line-height-lists: 1.7;  /* Enhanced for lists and bullets */
 
     /* Spacing Scale - 8px Base Unit */
     --space-1: 0.5rem;  /* 8px */
@@ -128,10 +131,18 @@ h1, h2, h3, h4, h5, h6 {
     letter-spacing: -0.025em;
 }
 
-h1 { font-size: var(--text-5xl); margin-bottom: var(--space-6); }
-h2 { font-size: var(--text-4xl); margin-bottom: var(--space-5); }
-h3 { font-size: var(--text-3xl); margin-bottom: var(--space-4); }
-h4 { font-size: var(--text-2xl); margin-bottom: var(--space-4); }
+h1 { font-size: var(--text-5xl); margin-bottom: var(--space-6); font-weight: var(--font-bold); }
+h2 { font-size: var(--text-3xl); margin-bottom: var(--space-5); font-weight: var(--font-bold); }
+h3 { font-size: var(--text-2xl); margin-bottom: var(--space-4); font-weight: var(--font-bold); }
+h4 { font-size: var(--text-xl); margin-bottom: var(--space-4); font-weight: var(--font-semibold); }
+
+@media (min-width: 768px) {
+    h1 { font-size: clamp(3.25rem, 2.75rem + 2.5vw, 4rem); } /* 64px desktop */
+}
+
+@media (max-width: 767px) {
+    h1 { font-size: var(--text-5xl-mobile); } /* 40px mobile */
+}
 
 p { margin-bottom: var(--space-4); line-height: 1.7; }
 
@@ -161,11 +172,20 @@ a:hover { color: var(--color-primary-dark); }
 }
 
 section {
-    padding: var(--space-12) 0; /* 96px - increased white space */
+    padding: var(--space-12) 0; /* 96px - baseline */
 }
 
 @media (min-width: 768px) {
-    section { padding: var(--space-16) 0; } /* 128px - clinical breathing room */
+    section { padding: 7.5rem 0; } /* 120px - 2025 breathing room */
+}
+
+/* Asymmetric spacing variations for humanized design */
+section:nth-child(even) {
+    padding-left: var(--space-5); /* 40px offset for asymmetry */
+}
+
+section:nth-child(odd) .container {
+    max-width: 1180px; /* Slight variation from standard 1200px */
 }
 
 /* ============================================
@@ -321,8 +341,19 @@ section {
     min-height: 90vh;
     display: flex;
     align-items: center;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--color-primary-dark);
     overflow: hidden;
+}
+
+/* Video background container */
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
 }
 
 .hero::before {
@@ -332,9 +363,7 @@ section {
     left: 0;
     right: 0;
     bottom: 0;
-    background:
-        radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3), transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(138, 43, 226, 0.3), transparent 50%);
+    background: var(--gradient-hero-overlay);
     z-index: 1;
 }
 
@@ -685,8 +714,17 @@ h2.section-title {
     margin: var(--space-16) auto 0;
 }
 
-.timeline-line {
-    display: none;
+/* Progress indicator connecting line */
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 32px; /* Align with step number badges */
+    left: 10%;
+    right: 10%;
+    height: 3px;
+    background: linear-gradient(to right, var(--color-primary-light), var(--color-primary));
+    z-index: 0;
+    border-radius: 2px;
 }
 
 .timeline-step {
@@ -698,12 +736,33 @@ h2.section-title {
     box-shadow: var(--shadow-md);
     transition: var(--transition-base);
     border: 2px solid var(--color-border);
+    z-index: 1; /* Above the connecting line */
 }
 
 .timeline-step:hover {
     transform: translateY(-4px);
     box-shadow: var(--shadow-xl);
     border-color: var(--color-primary);
+}
+
+/* Progress indicator dots at each step */
+.step-number-badge {
+    position: relative;
+    z-index: 2; /* Above everything */
+}
+
+.step-number-badge::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 16px;
+    height: 16px;
+    background: var(--color-primary);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px white, 0 0 0 6px var(--color-primary-light);
+    z-index: -1;
 }
 
 .step-circle {
@@ -774,7 +833,7 @@ h2.section-title {
 
 .logos-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: var(--space-8);
     align-items: center;
     max-width: 1000px;
@@ -783,15 +842,25 @@ h2.section-title {
 
 .logo-item {
     text-align: center;
-    font-size: var(--text-base);
-    color: var(--color-text-light);
-    font-weight: 600;
     padding: var(--space-4);
+    transition: var(--transition-base);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80px;
+}
+
+.publication-logo {
+    max-width: 100%;
+    height: auto;
+    max-height: 60px;
+    object-fit: contain;
+    filter: grayscale(100%) opacity(60%);
     transition: var(--transition-base);
 }
 
-.logo-item:hover {
-    color: var(--color-primary);
+.logo-item:hover .publication-logo {
+    filter: grayscale(0%) opacity(100%);
     transform: scale(1.05);
 }
 
@@ -1126,6 +1195,19 @@ h2.section-title {
     50% { transform: translateY(-10px); }
 }
 
+/* 2025 Scroll-triggered fade-in animations */
+.fade-in-element {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.fade-in-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Legacy animations for compatibility */
 .card, .timeline-step {
     animation: fadeInUp 0.6s ease-out forwards;
     opacity: 0;
