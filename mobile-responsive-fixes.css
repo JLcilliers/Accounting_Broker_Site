@@ -1,0 +1,462 @@
+/**
+ * MOBILE & RESPONSIVE FIXES
+ * Addresses issues 1-3, 7-9 from latest UX audit
+ */
+
+/* ============================================
+   ISSUE 1: Mobile Navigation with Hamburger
+   ============================================ */
+
+/* Hide mobile toggle by default (desktop) */
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 1001;
+}
+
+.mobile-menu-toggle span {
+    display: block;
+    width: 28px;
+    height: 3px;
+    background-color: white;
+    margin: 5px 0;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+/* Mobile navigation styles */
+@media (max-width: 767px) {
+    .mobile-menu-toggle {
+        display: block !important;
+    }
+
+    /* Hide nav links by default on mobile */
+    .nav-links {
+        position: fixed !important;
+        top: 60px !important;
+        left: 0 !important;
+        right: 0 !important;
+        background: rgba(30, 41, 59, 0.98) !important;
+        backdrop-filter: blur(10px) !important;
+        flex-direction: column !important;
+        padding: 20px !important;
+        transform: translateX(-100%) !important;
+        transition: transform 0.3s ease !important;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+        max-height: calc(100vh - 60px) !important;
+        overflow-y: auto !important;
+    }
+
+    /* Show nav when active */
+    .nav-links.active {
+        transform: translateX(0) !important;
+    }
+
+    /* Stack nav items vertically */
+    .nav-links a {
+        display: block !important;
+        padding: 16px 20px !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+        text-align: left !important;
+        font-size: 18px !important;
+    }
+
+    .nav-links a:last-child {
+        border-bottom: none !important;
+    }
+
+    /* Phone CTA in mobile menu */
+    .nav-links .btn-secondary {
+        margin-top: 16px !important;
+        width: 100% !important;
+        text-align: center !important;
+        background: linear-gradient(135deg, #059669 0%, #10b981 100%) !important;
+        border: none !important;
+    }
+
+    /* Hamburger animation when active */
+    .mobile-menu-toggle[aria-expanded="true"] span:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .mobile-menu-toggle[aria-expanded="true"] span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .mobile-menu-toggle[aria-expanded="true"] span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    /* Prevent body scroll when menu is open */
+    body.menu-open {
+        overflow: hidden !important;
+    }
+}
+
+/* ============================================
+   ISSUE 2: Standardized Section Padding
+   ============================================ */
+section {
+    padding: 64px 0 !important;
+}
+
+/* Hero maintains its special sizing */
+.hero {
+    padding-top: 80px !important;
+    padding-bottom: 64px !important;
+}
+
+/* Minor sections */
+.featured-in {
+    padding: 48px 0 !important;
+}
+
+/* Ensure consistent spacing after trust indicators */
+.trust-indicators {
+    margin-bottom: 0 !important;
+}
+
+@media (max-width: 768px) {
+    section {
+        padding: 48px 0 !important;
+    }
+
+    .hero {
+        padding-top: 60px !important;
+        padding-bottom: 48px !important;
+    }
+
+    .featured-in {
+        padding: 32px 0 !important;
+    }
+}
+
+/* ============================================
+   ISSUE 3: Responsive Three-Column Cards
+   ============================================ */
+
+/* Desktop: 3 columns */
+.cards-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 32px !important;
+}
+
+/* Tablet: 2 columns */
+@media (max-width: 991px) {
+    .cards-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 24px !important;
+    }
+}
+
+/* Mobile: 1 column (full width) */
+@media (max-width: 767px) {
+    .cards-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+
+    .card {
+        padding: 24px !important;
+        margin: 0 !important;
+    }
+
+    .card-title {
+        font-size: 20px !important;
+    }
+
+    .card-description {
+        font-size: 15px !important;
+        line-height: 1.6 !important;
+    }
+
+    .card-list {
+        font-size: 14px !important;
+    }
+}
+
+/* ============================================
+   ISSUE 7: Mobile-Optimized Footer
+   ============================================ */
+
+/* Desktop: 4 columns */
+.footer-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 40px !important;
+}
+
+/* Tablet: 2 columns */
+@media (max-width: 991px) {
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 32px !important;
+    }
+}
+
+/* Mobile: Stack vertically */
+@media (max-width: 599px) {
+    .footer-grid {
+        grid-template-columns: 1fr !important;
+        gap: 40px !important;
+    }
+
+    .footer-column {
+        text-align: left !important;
+    }
+
+    /* Ensure contact info is easily tappable */
+    .footer-contact li {
+        padding: 8px 0 !important;
+        min-height: 44px !important; /* iOS tap target size */
+        display: flex !important;
+        align-items: center !important;
+    }
+
+    .footer-contact a {
+        padding: 8px 0 !important;
+        display: inline-block !important;
+    }
+
+    /* Social icons wrap and have good spacing */
+    .social-links {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 16px !important;
+        margin-top: 16px !important;
+    }
+
+    .social-links a {
+        min-width: 44px !important;
+        min-height: 44px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+}
+
+/* ============================================
+   ISSUE 8: Typography Hierarchy & Mobile Scaling
+   ============================================ */
+
+/* Hero H1 - Fluid responsive sizing */
+h1, .hero-title {
+    font-size: clamp(32px, 5vw + 1rem, 56px) !important;
+    font-weight: 700 !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.02em !important;
+}
+
+/* Section Titles (H2) - Consistent across all sections */
+h2, .section-title, .section-title-light {
+    font-size: clamp(28px, 3vw + 1rem, 40px) !important;
+    font-weight: 800 !important;
+    line-height: 1.2 !important;
+    margin-bottom: 16px !important;
+}
+
+/* Card/Subsection Titles (H3) */
+h3, .card-title, .cta-title {
+    font-size: clamp(20px, 2vw + 1rem, 24px) !important;
+    font-weight: 600 !important;
+    line-height: 1.3 !important;
+}
+
+/* Body text - comfortable reading */
+p, li, .hero-subtitle, .section-subtitle {
+    font-size: clamp(15px, 1vw + 0.5rem, 18px) !important;
+    line-height: 1.6 !important;
+}
+
+/* Smaller descriptive text */
+.hero-benefit, .card-description, .cta-description {
+    font-size: clamp(14px, 1vw + 0.25rem, 16px) !important;
+    line-height: 1.5 !important;
+}
+
+/* Micro copy (under CTAs) */
+.cta-microcopy {
+    font-size: clamp(13px, 0.8vw, 14px) !important;
+    opacity: 0.85 !important;
+}
+
+/* Ensure Inter font is applied consistently */
+body, h1, h2, h3, h4, h5, h6, p, li, a, button {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+}
+
+/* Center-aligned sections */
+.value-proposition .section-title,
+.proof-results .section-title-light,
+.process-timeline .section-title {
+    text-align: center !important;
+}
+
+/* Left-aligned in two-column layouts */
+.differentiation-title {
+    text-align: left !important;
+}
+
+@media (max-width: 767px) {
+    /* Tighten spacing on mobile */
+    h2, .section-title, .section-title-light {
+        margin-bottom: 12px !important;
+    }
+
+    /* Reduce line height slightly for mobile readability */
+    p, li {
+        line-height: 1.5 !important;
+    }
+}
+
+/* ============================================
+   ISSUE 9: Prominent Featured In Logos
+   ============================================ */
+
+.featured-in {
+    background: #f8fafc !important; /* Very subtle gray to frame logos */
+    border-top: 1px solid #e5e7eb !important;
+    border-bottom: 1px solid #e5e7eb !important;
+}
+
+.featured-in .section-title {
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    color: #64748b !important;
+    margin-bottom: 32px !important;
+    text-align: center !important;
+}
+
+.logos-grid {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 48px !important;
+    flex-wrap: wrap !important;
+    margin-bottom: 32px !important;
+}
+
+.logo-item {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 12px 20px !important;
+    background: white !important;
+    border-radius: 8px !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
+    transition: all 0.3s ease !important;
+}
+
+.logo-item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+    transform: translateY(-2px) !important;
+}
+
+.publication-logo {
+    max-height: 50px !important;
+    width: auto !important;
+    filter: grayscale(100%) !important;
+    opacity: 0.7 !important;
+    transition: all 0.3s ease !important;
+}
+
+.logo-item:hover .publication-logo {
+    filter: grayscale(0%) !important;
+    opacity: 1 !important;
+}
+
+/* Certification badges - more prominent */
+.certification-badges {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 24px !important;
+    flex-wrap: wrap !important;
+}
+
+.certification-badge {
+    max-height: 70px !important;
+    width: auto !important;
+    transition: transform 0.3s ease !important;
+}
+
+.certification-badge:hover {
+    transform: scale(1.05) !important;
+}
+
+@media (max-width: 767px) {
+    .logos-grid {
+        gap: 32px !important;
+    }
+
+    .logo-item {
+        padding: 10px 16px !important;
+    }
+
+    .publication-logo {
+        max-height: 40px !important;
+    }
+
+    .certification-badges {
+        gap: 16px !important;
+    }
+
+    .certification-badge {
+        max-height: 60px !important;
+    }
+}
+
+/* ============================================
+   ADDITIONAL MOBILE OPTIMIZATIONS
+   ============================================ */
+
+/* Ensure buttons are tappable on mobile */
+@media (max-width: 767px) {
+    .btn {
+        min-height: 48px !important;
+        padding: 14px 28px !important;
+        font-size: 16px !important;
+        width: 100% !important; /* Full width on mobile for easier tapping */
+        max-width: 400px !important;
+        margin: 0 auto !important;
+    }
+
+    .hero-ctas {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 12px !important;
+    }
+
+    .hero-ctas .btn {
+        width: 100% !important;
+        max-width: 320px !important;
+    }
+
+    /* Dual CTA cards stack on mobile */
+    .cta-cards-grid {
+        flex-direction: column !important;
+        gap: 24px !important;
+    }
+
+    .cta-card {
+        padding: 32px 24px !important;
+    }
+}
+
+/* Improve touch targets across the site */
+@media (max-width: 767px) {
+    a, button {
+        min-height: 44px !important; /* iOS/Android minimum tap target */
+    }
+
+    .nav-links a {
+        min-height: 48px !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+}
