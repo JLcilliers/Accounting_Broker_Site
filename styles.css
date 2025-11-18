@@ -7,21 +7,21 @@
    CSS CUSTOM PROPERTIES
    ============================================ */
 :root {
-    /* Colors - Softer Monochromatic Blue Palette (2025 Professional) */
-    --color-primary: #2563EB;
-    --color-primary-dark: #1E3A8A;
-    --color-primary-light: #60A5FA;
+    /* Colors - Softer Trustworthy Blue Palette (2025 Financial Professional) */
+    --color-primary: #1E40AF;
+    --color-primary-dark: #1D4ED8;
+    --color-primary-light: #93C5FD;
     --color-primary-lighter: #DBEAFE;
 
-    /* Colors - Gradient Palette (Softer Blues with 10% Opacity Overlay) */
-    --gradient-primary: linear-gradient(to right, #1E3A8A, #60A5FA);
-    --gradient-hero-overlay: linear-gradient(135deg, rgba(30, 58, 138, 0.9) 0%, rgba(96, 165, 250, 0.85) 100%);
-    --gradient-subtle: linear-gradient(135deg, rgba(30, 58, 138, 0.05) 0%, rgba(96, 165, 250, 0.05) 100%);
+    /* Colors - Gradient Palette (Muted Blues with 15% Opacity) */
+    --gradient-primary: linear-gradient(to right, #1D4ED8, #93C5FD);
+    --gradient-hero-overlay: linear-gradient(135deg, rgba(29, 78, 216, 0.85) 0%, rgba(147, 197, 253, 0.85) 100%);
+    --gradient-subtle: linear-gradient(135deg, rgba(29, 78, 216, 0.05) 0%, rgba(147, 197, 253, 0.05) 100%);
 
-    /* Colors - Accent (Monochromatic Extension) */
-    --color-accent: #374151;
-    --color-accent-dark: #1F2937;
-    --color-accent-light: #6B7280;
+    /* Colors - Accent (Standardized to Primary) */
+    --color-accent: #1E40AF;
+    --color-accent-dark: #1D4ED8;
+    --color-accent-light: #93C5FD;
 
     /* Colors - Neutrals (WCAG AAA Compliant) */
     --color-text-primary: #0F172A;
@@ -58,7 +58,7 @@
     --line-height-tight: 1.2;
     --line-height-normal: 1.5;
     --line-height-relaxed: 1.6;
-    --line-height-lists: 1.7;  /* Enhanced for lists and bullets */
+    --line-height-lists: 1.8;  /* Enhanced to 1.8 for maximum scannability */
 
     /* Spacing Scale - 8px Base Unit */
     --space-1: 0.5rem;  /* 8px */
@@ -220,7 +220,7 @@ section:nth-child(odd) .container {
 .btn-primary:hover {
     background: linear-gradient(to right, var(--color-primary-dark), var(--color-primary-light));
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-    transform: translateY(-1px);
+    transform: translateY(-1px) scale(1.05);
     color: white;
 }
 
@@ -237,6 +237,7 @@ section:nth-child(odd) .container {
     color: var(--color-primary-dark);
     border-color: white;
     box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.15), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    transform: scale(1.05);
 }
 
 .btn-white {
@@ -247,7 +248,7 @@ section:nth-child(odd) .container {
 
 .btn-white:hover {
     background-color: var(--color-bg-secondary);
-    transform: translateY(-2px);
+    transform: translateY(-2px) scale(1.05);
     box-shadow: var(--shadow-lg);
 }
 
@@ -330,6 +331,55 @@ section:nth-child(odd) .container {
     box-shadow: 0 4px 12px rgb(37 99 235 / 30%);
 }
 
+/* Dropdown navigation */
+.nav-item-dropdown {
+    position: relative;
+}
+
+.nav-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    border-radius: var(--radius-lg);
+    padding: var(--space-3);
+    min-width: 200px;
+    list-style: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: var(--space-2);
+}
+
+.nav-item-dropdown:hover .nav-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.nav-dropdown li {
+    margin: 0;
+}
+
+.nav-dropdown a {
+    display: block;
+    padding: var(--space-3) var(--space-4);
+    color: var(--color-text-primary);
+    border-radius: var(--radius-md);
+    transition: all 0.2s ease;
+}
+
+.nav-dropdown a:hover {
+    background-color: var(--color-bg-secondary);
+    color: var(--color-primary);
+}
+
+.nav-dropdown a::after {
+    display: none;
+}
+
 .mobile-menu-toggle {
     display: none;
 }
@@ -378,6 +428,7 @@ section:nth-child(odd) .container {
     background-image: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1920&h=1080&fit=crop&q=80');
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
     opacity: 0.15;
     z-index: 1;
     filter: saturate(0.8);
@@ -461,7 +512,7 @@ section:nth-child(odd) .container {
     text-align: center;
     color: var(--color-text-primary);
     margin-bottom: var(--space-4);
-    font-weight: 700;
+    font-weight: 800;
     font-size: var(--text-3xl);
     line-height: 1.2;
     letter-spacing: -0.01em;
@@ -469,6 +520,7 @@ section:nth-child(odd) .container {
 
 h2.section-title {
     font-family: var(--font-display);
+    font-weight: 800;
 }
 
 .section-subtitle {
@@ -479,6 +531,7 @@ h2.section-title {
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+    font-weight: 600;
 }
 
 .cards-grid {
@@ -561,6 +614,7 @@ h2.section-title {
 
 .differentiation-image {
     position: relative;
+    transform: translateX(-20%);
 }
 
 .differentiation-image img {
@@ -675,6 +729,15 @@ h2.section-title {
     border-color: rgba(59, 130, 246, 0.3);
 }
 
+.stat-icon {
+    width: 48px;
+    height: 48px;
+    color: #FCD34D;
+    margin: 0 auto var(--space-4);
+    display: block;
+    filter: drop-shadow(0 4px 8px rgba(252, 211, 77, 0.3));
+}
+
 .stat-number {
     font-size: var(--text-5xl);
     font-weight: 800;
@@ -743,10 +806,17 @@ h2.section-title {
 .timeline {
     position: relative;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: 1fr;
     gap: var(--space-8);
     max-width: 1200px;
     margin: var(--space-16) auto 0;
+}
+
+@media (min-width: 1200px) {
+    .timeline {
+        grid-template-columns: repeat(5, 1fr);
+        gap: var(--space-6);
+    }
 }
 
 /* Progress indicator connecting line */
@@ -897,6 +967,45 @@ h2.section-title {
 .logo-item:hover .publication-logo {
     filter: grayscale(0%) opacity(100%);
     transform: scale(1.05);
+}
+
+/* Certification badges */
+.certification-badges {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-8);
+    margin-top: var(--space-14);
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-6);
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-full);
+    border: 2px solid var(--color-primary-light);
+    transition: var(--transition-base);
+}
+
+.badge:hover {
+    background: white;
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(30, 64, 175, 0.15);
+}
+
+.badge-icon {
+    width: 24px;
+    height: 24px;
+    color: var(--color-primary);
+}
+
+.badge-text {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-text-primary);
 }
 
 /* ============================================
