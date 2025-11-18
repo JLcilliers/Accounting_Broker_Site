@@ -158,34 +158,31 @@ a:hover { color: var(--color-primary-dark); }
    LAYOUT UTILITIES
    ============================================ */
 .container {
-    max-width: 1280px;
+    max-width: 1140px;
     margin: 0 auto;
-    padding: 0 var(--space-6);
+    padding: 0 24px;
+    width: 100%;
 }
 
 @media (min-width: 768px) {
-    .container { padding: 0 var(--space-8); }
+    .container {
+        padding: 0 32px;
+    }
 }
 
 @media (min-width: 1024px) {
-    .container { padding: 0 var(--space-12); }
+    .container {
+        padding: 0 40px;
+    }
 }
 
+/* Standardized vertical rhythm - consistent spacing across all sections */
 section {
-    padding: var(--space-12) 0; /* 96px - baseline */
+    padding: 80px 0;
 }
 
-@media (min-width: 768px) {
-    section { padding: 7.5rem 0; } /* 120px - 2025 breathing room */
-}
-
-/* Asymmetric spacing variations for humanized design */
-section:nth-child(even) {
-    padding-left: var(--space-5); /* 40px offset for asymmetry */
-}
-
-section:nth-child(odd) .container {
-    max-width: 1180px; /* Slight variation from standard 1200px */
+section.section-minor {
+    padding: 40px 0;
 }
 
 /* ============================================
@@ -389,11 +386,13 @@ section:nth-child(odd) .container {
    ============================================ */
 .hero {
     position: relative;
-    min-height: 90vh;
+    min-height: 70vh;
     display: flex;
     align-items: center;
+    justify-content: center;
     background: var(--color-primary-dark);
     overflow: hidden;
+    padding-top: 80px; /* Clear fixed header */
 }
 
 /* Video background container */
@@ -440,7 +439,8 @@ section:nth-child(odd) .container {
     max-width: 900px;
     margin: 0 auto;
     text-align: center;
-    padding: var(--space-8) var(--space-6);
+    padding: 40px 24px;
+    width: 100%;
 }
 
 .hero-title {

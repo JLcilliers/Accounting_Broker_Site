@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" width="200" height="80">
+  <!-- Background -->
+  <rect width="200" height="80" rx="8" fill="#1e40af"/>
+
+  <!-- Shield icon -->
+  <path d="M30 20 L40 15 L50 20 L50 35 C50 42 45 48 40 50 C35 48 30 42 30 35 Z"
+        fill="#fff" opacity="0.9"/>
+
+  <!-- Text -->
+  <text x="65" y="32" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#fff">
+    AICPA
+  </text>
+  <text x="65" y="48" font-family="Arial, sans-serif" font-size="10" font-weight="400" fill="#dbeafe">
+    Member Firm
+  </text>
+
+  <!-- Checkmark in shield -->
+  <path d="M37 32 L39 35 L43 28" stroke="#1e40af" stroke-width="2" fill="none" stroke-linecap="round"/>
+</svg>

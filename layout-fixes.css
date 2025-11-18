@@ -1,0 +1,401 @@
+/**
+ * COMPREHENSIVE LAYOUT FIXES
+ * Addresses all 21 alignment and consistency issues
+ */
+
+/* ============================================
+   GLOBAL CONTAINER STANDARDIZATION (Issues 1-2)
+   ============================================ */
+.container {
+    max-width: 1140px !important;
+    margin: 0 auto !important;
+    padding: 0 24px !important;
+    width: 100% !important;
+}
+
+@media (min-width: 768px) {
+    .container {
+        padding: 0 32px !important;
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        padding: 0 40px !important;
+    }
+}
+
+/* Consistent vertical rhythm */
+section {
+    padding: 80px 0 !important;
+}
+
+section.section-minor,
+.featured-in {
+    padding: 40px 0 !important;
+}
+
+/* ============================================
+   HERO SECTION FIXES (Issues 3-4)
+   ============================================ */
+.hero {
+    min-height: 70vh !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding-top: 80px !important;
+}
+
+.hero-content {
+    max-width: 900px !important;
+    padding: 40px 24px !important;
+    width: 100% !important;
+}
+
+/* Clear CTA hierarchy */
+.hero-ctas {
+    display: flex !important;
+    gap: 16px !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+}
+
+.hero-ctas .btn-primary {
+    /* Solid primary CTA */
+    order: 1;
+}
+
+.hero-ctas .btn-secondary {
+    /* Outlined secondary CTA */
+    order: 2;
+    background-color: transparent !important;
+    border: 2px solid rgba(255, 255, 255, 0.9) !important;
+}
+
+/* ============================================
+   STRATEGIC M&A CARDS (Issues 5-6)
+   ============================================ */
+.cards-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 32px !important;
+    align-items: stretch !important;
+}
+
+@media (max-width: 1199px) {
+    .cards-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .cards-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+.card {
+    padding: 32px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+}
+
+.card-title {
+    font-size: 22px !important;
+    margin-bottom: 16px !important;
+    font-weight: 600 !important;
+}
+
+.card-description {
+    margin-bottom: 20px !important;
+    line-height: 1.6 !important;
+}
+
+.card-list {
+    margin-top: auto !important;
+}
+
+.card-list li {
+    line-height: 1.8 !important;
+    margin-bottom: 12px !important;
+}
+
+/* ============================================
+   EX-BIG FOUR SECTION (Issues 7-8)
+   ============================================ */
+.differentiation-grid {
+    display: grid !important;
+    grid-template-columns: 1.2fr 1fr !important;
+    gap: 40px !important;
+    align-items: center !important;
+}
+
+.differentiation-image {
+    transform: none !important; /* Remove asymmetric offset */
+}
+
+@media (max-width: 1023px) {
+    .differentiation-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+.differentiation-list {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+}
+
+.differentiation-list li {
+    padding: 24px !important;
+    border-radius: 12px !important;
+}
+
+/* ============================================
+   PROVEN RESULTS (Issues 9-10)
+   ============================================ */
+.stats-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 32px !important;
+    margin-bottom: 64px !important;
+}
+
+@media (max-width: 1023px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .stats-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+.stat-number {
+    font-size: 48px !important;
+    font-weight: 800 !important;
+    line-height: 1 !important;
+    margin-bottom: 12px !important;
+}
+
+.stat-label {
+    font-size: 16px !important;
+    color: rgba(255, 255, 255, 0.75) !important;
+}
+
+.testimonial {
+    max-width: 900px !important;
+    margin: 0 auto !important;
+}
+
+/* ============================================
+   TRANSACTION PROCESS (Issues 11-12)
+   ============================================ */
+.process-timeline {
+    padding: 80px 0 !important;
+}
+
+.timeline {
+    margin-top: 48px !important;
+}
+
+@media (min-width: 1200px) {
+    .timeline {
+        grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+        gap: 24px !important;
+    }
+}
+
+@media (max-width: 1199px) {
+    .timeline {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .timeline {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+.timeline-step {
+    padding: 32px 24px !important;
+}
+
+/* ============================================
+   FEATURED IN (Issue 13)
+   ============================================ */
+.featured-in .container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+}
+
+.logos-grid {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 40px !important;
+    flex-wrap: wrap !important;
+    max-width: 1000px !important;
+    margin: 0 auto !important;
+}
+
+.publication-logo {
+    max-height: 50px !important;
+}
+
+.certification-badges {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 32px !important;
+    margin-top: 48px !important;
+}
+
+/* ============================================
+   DUAL CTA CARDS (Issues 14-15)
+   ============================================ */
+.dual-cta {
+    padding: 80px 0 !important;
+}
+
+.cta-cards-grid {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 32px !important;
+    max-width: 1140px !important;
+    margin: 0 auto !important;
+    padding: 0 24px !important;
+}
+
+@media (max-width: 1023px) {
+    .cta-cards-grid {
+        flex-direction: column !important;
+    }
+}
+
+.cta-card {
+    flex: 1 !important;
+    max-width: 540px !important;
+    padding: 48px !important;
+}
+
+.cta-card .btn-white {
+    background-color: white !important;
+    color: var(--color-primary-dark) !important;
+    font-weight: 600 !important;
+}
+
+/* ============================================
+   FOOTER (Issues 16-17)
+   ============================================ */
+.footer .container {
+    max-width: 1140px !important;
+}
+
+.footer-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 40px !important;
+}
+
+@media (max-width: 1023px) {
+    .footer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .footer-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+.footer-links a,
+.footer-contact li,
+.footer-bottom {
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-size: 14px !important;
+}
+
+/* ============================================
+   TYPOGRAPHY HIERARCHY (Issues 18-19)
+   ============================================ */
+h1, .hero-title {
+    font-size: clamp(40px, 5vw, 48px) !important;
+    font-weight: 700 !important;
+    line-height: 1.1 !important;
+}
+
+h2, .section-title {
+    font-size: clamp(28px, 4vw, 32px) !important;
+    font-weight: 800 !important;
+    line-height: 1.2 !important;
+    margin-bottom: 16px !important;
+}
+
+h3, .card-title {
+    font-size: clamp(20px, 3vw, 22px) !important;
+    font-weight: 600 !important;
+    line-height: 1.3 !important;
+}
+
+.section-subtitle,
+.card-description {
+    font-weight: 400 !important;
+    color: var(--color-text-light) !important;
+}
+
+/* ============================================
+   BUTTON SYSTEM (Issue 20)
+   ============================================ */
+.btn {
+    padding: 14px 32px !important;
+    border-radius: 8px !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+    display: inline-block !important;
+    text-align: center !important;
+    border: 2px solid transparent !important;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%) !important;
+    color: white !important;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px) scale(1.05) !important;
+    box-shadow: 0 10px 20px rgba(30, 64, 175, 0.3) !important;
+}
+
+.btn-secondary {
+    background-color: rgba(255, 255, 255, 0.15) !important;
+    color: white !important;
+    border: 2px solid rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+.btn-secondary:hover {
+    background-color: white !important;
+    color: var(--color-primary-dark) !important;
+    transform: scale(1.05) !important;
+}
+
+.btn-white {
+    background-color: white !important;
+    color: var(--color-primary-dark) !important;
+}
+
+.btn-white:hover {
+    background-color: var(--color-bg-secondary) !important;
+    transform: translateY(-2px) scale(1.05) !important;
+}
+
+.btn-sm {
+    padding: 10px 24px !important;
+    font-size: 14px !important;
+}
