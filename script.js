@@ -421,6 +421,36 @@ if ('IntersectionObserver' in window) {
 }
 
 // ============================================
+// STICKY CTA BAR
+// ============================================
+function initStickyCTA() {
+    const stickyCTA = document.getElementById('sticky-cta');
+    const heroSection = document.getElementById('hero');
+
+    if (!stickyCTA || !heroSection) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) {
+                stickyCTA.classList.add('visible');
+            } else {
+                stickyCTA.classList.remove('visible');
+            }
+        });
+    }, {
+        threshold: 0,
+        rootMargin: '0px'
+    });
+
+    observer.observe(heroSection);
+}
+
+// Initialize sticky CTA on page load
+if ('IntersectionObserver' in window) {
+    initStickyCTA();
+}
+
+// ============================================
 // INITIALIZATION
 // ============================================
 console.log('Accounting Broker Homepage Loaded');
